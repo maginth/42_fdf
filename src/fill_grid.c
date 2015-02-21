@@ -6,7 +6,7 @@
 /*   By: mguinin <mguinin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/30 18:51:04 by mguinin           #+#    #+#             */
-/*   Updated: 2015/01/31 18:19:37 by mguinin          ###   ########.fr       */
+/*   Updated: 2015/02/21 18:31:10 by mguinin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,8 +45,17 @@ void		link_shapes(t_grid *g, int i, int i_prev, int end)
 	n = g->size;
 	while (i < end && i_prev < i_prev_end)
 	{
-		g->shape[n++] = (t_shape){i_prev, i + 1, i};
-		g->shape[n++] = (t_shape){i_prev, i_prev + 1, i + 1};
+		if (g->coordinate[i].z + g->coordinate[i_prev + 1].z 
+			> g->coordinate[i + 1].z + g->coordinate[i_prev].z)
+		{
+			g->shape[n++] = (t_shape){i_prev + 1, i + 1, i};
+			g->shape[n++] = (t_shape){i_prev, i_prev + 1, i};
+		}
+		else
+		{
+			g->shape[n++] = (t_shape){i_prev, i + 1, i};
+			g->shape[n++] = (t_shape){i_prev, i_prev + 1, i + 1};
+		}
 		g->shape[n++] = (t_shape){i, i_prev, -1};
 		i++;
 		i_prev++;
