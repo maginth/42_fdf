@@ -28,7 +28,7 @@ SRCS = 	main.c \
 		fill_grid.c \
 		quicksort.c \
 
-FLAG = -L/usr/X11/lib -lXext -lX11 -lmlx -L./libft -lft -L./win -lwin
+FLAG =  -L./win -lwin -L/usr/lib/X11 -lmlx -lXext -lX11 -L./libft -lft
 
 V ?= 0
 
@@ -60,7 +60,7 @@ all: $(NAME)
 $(NAME): $(OPATH) $(OBJS) libft/libft.a win/win.a
 	@echo "$(U)$(C)[COMPILE:\033[1;32m DONE$(C)]\033[0m"
 	@echo "\033[0;32m"
-	$(CC) -o $@ $(CFLAGS) -I$(IPATH) $(OBJS)
+	$(CC) -o $@ $(OBJS) $(CFLAGS) -I$(IPATH)
 	@echo "\033[1;31m [.working.]"
 	@echo "$(SKIP)\033[A\033[2K$(SKIP)"
 	@echo "$(SKIP)$(U)$(C)[BUILD  :\033[1;32m DONE$(C)]\033[0m"
@@ -77,7 +77,7 @@ win/win.a:
 $(OPATH)%.o: $(SPATH)%.c
 	@echo "$(U)$(C)[COMPILE: \033[1;31m$<\033[A\033[0m"
 	@echo "\033[0;32m"
-	$(CC) -o $@ $(CFLAGS) -I$(IPATH) -c $<
+	$(CC) -o $@ -c $< $(CFLAGS) -I$(IPATH)
 	@echo "\033[1;31m [.working.]"
 	@echo "$(SKIP)\033[A\033[2K$(SKIP)"
 

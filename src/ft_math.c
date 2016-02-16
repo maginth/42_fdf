@@ -52,7 +52,7 @@ float				ft_cos(float x)
 
 float				ft_sin(float x)
 {
-	return (cos(x - g_pi / 2));
+	return (ft_cos(x - g_pi / 2));
 }
 
 float				ft_sqrt(float x)

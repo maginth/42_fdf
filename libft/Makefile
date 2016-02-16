@@ -41,7 +41,7 @@ DEBUG_1 :=-g3
 INCLUDE = ./
 CFLAGS = $(DEBUG_$(D)) -Wall -Werror -Wextra
 CC = $(SILENCE)gcc
-LIB = $(SILENCE)ar rc
+LIB = $(SILENCE)ar rcs
 RM = $(SILENCE)rm -rf
 
 SRCPATH = ./

@@ -37,7 +37,7 @@ DEBUG_1 :=-g3
 INCLUDE = ./
 CFLAGS = $(DEBUG_$(D)) -Wall -Werror -Wextra
 CC = $(SILENCE)gcc
-LIB = $(SILENCE)ar rc
+LIB = $(SILENCE)ar rcs
 RM = $(SILENCE)rm -rf
 
 SRCPATH = ./
@@ -63,7 +63,7 @@ $(NAME): $(OBJS)
 %.o: %.c
 	@echo "$(U)$(C)[COMPILE: \033[1;31m$<\033[A\033[0m"
 	@echo "\033[0;32m"
-	$(CC) -o $@ $(CFLAGS) -I $(INCLUDE) -c $<
+	$(CC) -o $@ -c $< $(CFLAGS) -I $(INCLUDE)
 	@echo "\033[1;31m [.working.]"
 	@echo "$(SKIP)\033[A\033[2K$(SKIP)"
 
