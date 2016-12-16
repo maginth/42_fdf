@@ -20,7 +20,7 @@
 # include <stddef.h>
 # include <unistd.h>
 # include <fcntl.h>
-# include <mlx.h>
+# include <../minilibx/mlx.h>
 # include <stdio.h>
 # include <limits.h>
 # define KEY_ESC 27
@@ -33,8 +33,9 @@
 # define KEY_PGUP 'U'
 # define KEY_PGDW 'V'
 # define KEY_SPACE 32
-# define KEY_ZERO 176
-# define KEY_DOT 174
+# define KEY_ZERO 48
+# define KEY_DOT '.'
+# define KEY_COMA ','
 
 /*
 ** mlx_win amd img are private fields;
@@ -45,11 +46,13 @@ typedef	unsigned char	t_uc;
 typedef	struct			s_win
 {
     void				*mlx_win;
-	void				*img;
 	int					*pix_start;
+	void				*img;
 	int					*pix_end;
 	int					width;
 	int					height;
+	int					*pix_start2;
+	void				*img2;
 }						t_win;
 
 typedef	void (*t_fw)(t_win *, void *param);

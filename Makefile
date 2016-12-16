@@ -23,12 +23,11 @@ SRCS = 	main.c \
 		limit_shape.c \
 		view.c \
 		bind_key.c \
-		ft_math.c \
 		read_file.c \
 		fill_grid.c \
 		quicksort.c \
 
-FLAG = -L/usr/X11/lib -lXext -lX11 -lmlx -L./libft -lft -L./win -lwin
+LIB = -L./libft -lft -L./win -lwin -L./minilibx -lmlx -lXext -lX11 
 
 V ?= 0
 
@@ -42,7 +41,7 @@ DEBUG_1 = -g3
 DEBUG_0 =
 
 
-CFLAGS = $(DEBUG_$(D)) -Wall -Werror -Wextra -O3 $(FLAG)
+CFLAGS = $(DEBUG_$(D)) -Wall -Werror -Wextra -O3
 CC = $(SILENCE)gcc
 RM = $(SILENCE)rm -rf
 
@@ -60,7 +59,7 @@ all: $(NAME)
 $(NAME): $(OPATH) $(OBJS) libft/libft.a win/win.a
 	@echo "$(U)$(C)[COMPILE:\033[1;32m DONE$(C)]\033[0m"
 	@echo "\033[0;32m"
-	$(CC) -o $@ $(CFLAGS) -I$(IPATH) $(OBJS)
+	$(CC) -o $@ $(CFLAGS) -I$(IPATH) $(OBJS) $(LIB)
 	@echo "\033[1;31m [.working.]"
 	@echo "$(SKIP)\033[A\033[2K$(SKIP)"
 	@echo "$(SKIP)$(U)$(C)[BUILD  :\033[1;32m DONE$(C)]\033[0m"
@@ -71,8 +70,15 @@ $(OPATH):
 libft/libft.a:
 	@make -C libft
 
-win/win.a:
+win/libwin.a:
 	@make -C win
+
+mlx: minilibx/libmlx.a
+
+minilibx/libmlx.a:
+	wget http://files.achedeuzot.me/42/mlx/mlx-2014-01-06.tgz
+	tar -xzf mlx-2014-01-06.tgz
+	make -C minilibx
 
 $(OPATH)%.o: $(SPATH)%.c
 	@echo "$(U)$(C)[COMPILE: \033[1;31m$<\033[A\033[0m"

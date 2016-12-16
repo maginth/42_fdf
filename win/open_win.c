@@ -41,11 +41,12 @@ t_win			*open_win(int width, int height, char *name)
 	int			endian;
 
 	init_mlx();
-	win = (t_win *)malloc(sizeof(t_win));
+	win = (t_win *)malloc(sizeof(*win)+128);
 	win->mlx_win = mlx_new_window(g_mlx_core, width, height, name);
 	win->img = mlx_new_image(g_mlx_core, width, height);
-	win->pix_start =
-		(int *)mlx_get_data_addr(win->img, &bpp, &size_l, &endian);
+	win->img2 = mlx_new_image(g_mlx_core, width, height);
+	win->pix_start = (int *)mlx_get_data_addr(win->img, &bpp, &size_l, &endian);
+	win->pix_start2 = (int *)mlx_get_data_addr(win->img2, &bpp, &size_l, &endian);
 	if (bpp != 32)
 		exit(EXIT_FAILURE);
 	win->width = width;
