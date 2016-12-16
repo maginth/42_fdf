@@ -39,9 +39,8 @@ git clone or dowload, got to the git folder in command prompt  :
 - Arrow key : rotate arround vertical and horizontal axis
 - W,A,S,D : move arround horizontaly 
 - Q,Z : move up and down
-- Numpad +/- : zoom in and out 
-- Numpad 4, 6, 8, 2 : translate the sceen verticaly and horizontaly
-- Numpad ,/. : more/less perpective (for perspective modes only)
+- Numpad +/- : zoom in/out 
+- ,/. : more/less perpective (for perspective modes only)
 - Space : change to next display mode (4 avalable)
 - PageUp/PageDown : increase or lower map reliefs
 - Escape: close the simulaltion
