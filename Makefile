@@ -56,7 +56,7 @@ U = $(C)[$(NAME)]----->\033[0m
 
 all: $(NAME)
 
-$(NAME): $(OPATH) $(OBJS) libft/libft.a win/win.a
+$(NAME): $(OPATH) $(OBJS) libft/libft.a win/libwin.a
 	@echo "$(U)$(C)[COMPILE:\033[1;32m DONE$(C)]\033[0m"
 	@echo "\033[0;32m"
 	$(CC) -o $@ $(CFLAGS) -I$(IPATH) $(OBJS) $(LIB)
@@ -76,9 +76,14 @@ win/libwin.a:
 mlx: minilibx/libmlx.a
 
 minilibx/libmlx.a:
+	sed -i 's_<mlx.h>_<../minilibx/mlx.h>_g" */*.h
 	wget http://files.achedeuzot.me/42/mlx/mlx-2014-01-06.tgz
 	tar -xzf mlx-2014-01-06.tgz
-	make -C minilibx
+	if make -C minilibx 2>&1 > /dev/null | grep strlcpy ; \
+	then ; \
+		sed -i 's/strlcpy/strncpy/g' minilibx/*.c ; \
+		make -C minilibx; \
+	fi
 
 $(OPATH)%.o: $(SPATH)%.c
 	@echo "$(U)$(C)[COMPILE: \033[1;31m$<\033[A\033[0m"

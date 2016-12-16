@@ -20,7 +20,7 @@
 # include <stddef.h>
 # include <unistd.h>
 # include <fcntl.h>
-# include <../minilibx/mlx.h>
+# include <mlx.h>
 # include <stdio.h>
 # include <limits.h>
 # define KEY_ESC 27

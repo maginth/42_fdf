@@ -16,7 +16,7 @@
 # include <stddef.h>
 # include <unistd.h>
 # include <fcntl.h>
-# include <../minilibx/mlx.h>
+# include <mlx.h>
 # include "../libft/libft.h"
 # include <stdio.h>
 # include <limits.h>
