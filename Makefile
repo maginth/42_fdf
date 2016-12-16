@@ -80,9 +80,9 @@ minilibx/libmlx.a:
 	wget http://files.achedeuzot.me/42/mlx/mlx-2014-01-06.tgz
 	tar -xzf mlx-2014-01-06.tgz
 	if make -C minilibx 2>&1 > /dev/null | grep strlcpy ; \
-	then ; \
+	then \
 		sed -i 's/strlcpy/strncpy/g' minilibx/*.c ; \
-		make -C minilibx; \
+		make -C minilibx ; \
 	fi
 
 $(OPATH)%.o: $(SPATH)%.c
