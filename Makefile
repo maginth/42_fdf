@@ -76,7 +76,7 @@ win/libwin.a:
 mlx: minilibx/libmlx.a
 
 minilibx/libmlx.a:
-	sed -i 's_<mlx.h>_<../minilibx/mlx.h>_g" */*.h
+	sed -i 's_<mlx.h>_<../minilibx/mlx.h>_g' */*.h
 	wget http://files.achedeuzot.me/42/mlx/mlx-2014-01-06.tgz
 	tar -xzf mlx-2014-01-06.tgz
 	if make -C minilibx 2>&1 > /dev/null | grep strlcpy ; \
